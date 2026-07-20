@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -16,6 +17,7 @@
       font-style: normal;
       font-display: swap;
     }
+
     @font-face {
       font-family: 'BaopuTi';
       src: local('HA-抱朴体 粗体'), local('HA-Pure Bold');
@@ -23,6 +25,7 @@
       font-style: normal;
       font-display: swap;
     }
+
     @font-face {
       font-family: 'BaopuTi';
       src: local('HA-抱朴体 特粗体'), local('HA-Pure ExtraBold');
@@ -31,7 +34,9 @@
       font-display: swap;
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -96,9 +101,19 @@
 
     /* 微小浮动 */
     @keyframes gentle-sway {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      40% { transform: translateY(-4px) rotate(0.8deg); }
-      60% { transform: translateY(-3px) rotate(-0.5deg); }
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      40% {
+        transform: translateY(-4px) rotate(0.8deg);
+      }
+
+      60% {
+        transform: translateY(-3px) rotate(-0.5deg);
+      }
     }
 
     .sway {
@@ -179,9 +194,17 @@
       display: block;
     }
 
-    .dot-sep .d1 { background: var(--dot-ochre); }
-    .dot-sep .d2 { background: var(--dot-green); }
-    .dot-sep .d3 { background: var(--dot-blue); }
+    .dot-sep .d1 {
+      background: var(--dot-ochre);
+    }
+
+    .dot-sep .d2 {
+      background: var(--dot-green);
+    }
+
+    .dot-sep .d3 {
+      background: var(--dot-blue);
+    }
 
     /* ===== 社交图标行 ===== */
     .social-row {
@@ -249,8 +272,8 @@
     }
 
     /* 卡片之间的细线 - 手绘感 */
-    .link-card + .link-card {
-      border-top: 1px solid rgba(0,0,0,0.08);
+    .link-card+.link-card {
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .link-card:hover {
@@ -335,329 +358,382 @@
       .container {
         padding: 0 20px 56px;
       }
+
       .name-cn {
         font-size: 30px;
         letter-spacing: 8px;
       }
+
       .top-breath {
         height: 40px;
       }
+
       .section-title {
         margin: 36px 0 14px;
       }
+
       .link-card {
         padding: 15px 0;
       }
+
       .link-label {
         font-size: 13px;
       }
     }
   </style>
 </head>
+
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="top-breath"></div>
+    <div class="top-breath"></div>
 
-  <!-- ===== 一、个人信息介绍 ===== -->
-  <div class="profile">
-    <div class="avatar-wrap">
-      <img src="avatar.png" alt="胡雪莹头像" />
+    <!-- ===== 一、个人信息介绍 ===== -->
+    <div class="profile">
+      <div class="avatar-wrap">
+        <img src="avatar.png" alt="胡雪莹头像" />
+      </div>
+
+      <h1 class="name-cn">胡雪莹</h1>
+      <p class="name-en">HU XUEYING</p>
+
+      <div class="bio">
+        <p>2025-2026 香港城市大学 · 整合营销传播</p>
+        <p>2021-2025 西南大学 · 广播电视编导</p>
+      </div>
     </div>
 
-    <h1 class="name-cn">胡雪莹</h1>
-    <p class="name-en">HU XUEYING</p>
-
-    <div class="bio">
-      <p>2025-2026 香港城市大学 · 整合营销传播</p>
-      <p>2021-2025 西南大学 · 广播电视编导</p>
+    <!-- 低饱和装饰点 -->
+    <div class="dot-sep">
+      <span class="d1"></span>
+      <span class="d2"></span>
+      <span class="d3"></span>
     </div>
-  </div>
 
-  <!-- 低饱和装饰点 -->
-  <div class="dot-sep">
-    <span class="d1"></span>
-    <span class="d2"></span>
-    <span class="d3"></span>
-  </div>
-
-  <!-- 联系方式图标 -->
-  <div class="social-row">
-    <a href="tel:+8613210861027" class="social-icon" title="电话" aria-label="电话">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-      </svg>
-    </a>
-    <a href="mailto:forestalso@126.com" class="social-icon" title="邮箱" aria-label="邮箱">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="2"/>
-        <path d="M22 4 L12 13 L2 4"/>
-      </svg>
-    </a>
-    <a href="https://wa.me/85291531874" class="social-icon" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- ===== 二、可下载简历 ===== -->
-  <h2 class="section-title">可下载简历</h2>
-
-  <div>
-    <a href="resume-cn.pdf" class="link-card download" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="12" y1="18" x2="12" y2="12"/>
-          <polyline points="9 15 12 18 15 15"/>
+    <!-- 联系方式图标 -->
+    <div class="social-row">
+      <a href="tel:+8613210861027" class="social-icon" title="电话" aria-label="电话">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path
+            d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
         </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">胡雪莹 个人简历（中文版）</div>
-        <div class="link-meta">PDF · 点击下载（香港城市大学）</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="resume-en.pdf" class="link-card download" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="12" y1="18" x2="12" y2="12"/>
-          <polyline points="9 15 12 18 15 15"/>
+      </a>
+      <a href="mailto:forestalso@126.com" class="social-icon" title="邮箱" aria-label="邮箱">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M22 4 L12 13 L2 4" />
         </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">胡雪莹 个人简历（英文版）</div>
-        <div class="link-meta">PDF · Click to download（City University of Hong Kong）</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-  </div>
-
-  <!-- ===== 三、微信公众号运营案例 ===== -->
-  <h2 class="section-title">微信公众号运营案例</h2>
-
-  <div>
-    <a href="https://mp.weixin.qq.com/s/2dmMFEqBbcnJyFy8TSD8IA" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
-          <path d="M8 7h8M8 11h8M8 15h5"/>
+      </a>
+      <a href="https://wa.me/85291531874" class="social-icon" title="WhatsApp" aria-label="WhatsApp" target="_blank"
+        rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path
+            d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
         </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">2025-2026 CityU新传BOT</div>
-        <div class="link-meta">微信公众号</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="https://mp.weixin.qq.com/s/e76Iev9xiov1Yk0ghO1iGQ" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
-          <path d="M8 7h8M8 11h8M8 15h5"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">2025 从澜心理</div>
-        <div class="link-meta">微信公众号</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="https://mp.weixin.qq.com/s/pCNmShzb9KwgtFmTKYul4g" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
-          <path d="M8 7h8M8 11h8M8 15h5"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">2024 i深铁城服</div>
-        <div class="link-meta">微信公众号</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="https://mp.weixin.qq.com/s/qT9tFbfCtHFENjzFzQyPuA" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
-          <path d="M8 7h8M8 11h8M8 15h5"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">2024 中国太保国际家族办公室</div>
-        <div class="link-meta">微信公众号</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="https://mp.weixin.qq.com/s/ZHyU-adVBpCYRMybBZ7dnw" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
-          <path d="M8 7h8M8 11h8M8 15h5"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">2024 香港特区政府驻沪办</div>
-        <div class="link-meta">微信公众号</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="https://mp.weixin.qq.com/s/4PCWXqet-irAxKrGb6DLdg" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
-          <path d="M8 7h8M8 11h8M8 15h5"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">2023 GOMIT（本科毕业设计短片宣发账号）</div>
-        <div class="link-meta">微信公众号</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-  </div>
-
-  <!-- ===== 四、小红书运营案例 ===== -->
-  <h2 class="section-title">小红书运营案例</h2>
-
-  <div>
-    <a href="https://xhslink.com/m/70ccyq0GQbB" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="4" y="4" width="16" height="16" rx="4"/>
-          <path d="M8 12l3 3 5-5"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">从澜心理 - 小红书</div>
-        <div class="link-meta">小红书账号</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-  </div>
-
-  <!-- ===== 五、Instagram运营案例 ===== -->
-  <h2 class="section-title">Instagram运营案例</h2>
-
-  <div>
-    <a href="https://www.instagram.com/haha.playground?igsh=MXczMXhpdjk4bDVjbQ==" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5"/>
-          <circle cx="12" cy="12" r="5"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">haha.playground</div>
-        <div class="link-meta">Instagram</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-  </div>
-
-  <!-- ===== 六、撰稿案例（重庆瞭望） ===== -->
-  <h2 class="section-title">撰稿案例（重庆瞭望）</h2>
-
-  <div>
-    <a href="https://mp.weixin.qq.com/s/MH3e6gkDTdzjg6vKfoPWvw" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
-          <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">城市漫游热起来的背后</div>
-        <div class="link-meta">重庆瞭望</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="https://mp.weixin.qq.com/s/KTSBmFTu8qy3XhlJOHnzTw" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
-          <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">城市IP何以出圈？</div>
-        <div class="link-meta">重庆瞭望</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-
-    <a href="https://mp.weixin.qq.com/s/N4Ry1iniXbu4Ijv-toLKow" class="link-card" target="_blank" rel="noopener">
-      <span class="link-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
-          <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
-        </svg>
-      </span>
-      <span class="link-body">
-        <div class="link-label">假，你休够了吗？</div>
-        <div class="link-meta">重庆瞭望</div>
-      </span>
-      <span class="link-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </span>
-    </a>
-  </div>
-
-  <!-- ===== 页脚 ===== -->
-  <div class="footer">
-    <!-- 手绘波浪线 -->
-    <div class="footer-scribble">
-      <svg width="64" height="28" viewBox="0 0 64 28" fill="none">
-        <path d="M4 14 Q12 6 20 14 Q28 22 36 14 Q44 6 52 14 Q58 18 60 16"
-          stroke="#1c1c1c" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-        <!-- 小星星点缀 -->
-        <path d="M18 5 L18.8 6.5 L20.5 7 L18.8 7.5 L18 9 L17.2 7.5 L15.5 7 L17.2 6.5 Z"
-          stroke="#9bb58b" stroke-width="0.7" stroke-linejoin="round" fill="none"/>
-        <path d="M46 4 L46.6 5.2 L48 5.6 L46.6 6 L46 7.2 L45.4 6 L44 5.6 L45.4 5.2 Z"
-          stroke="#8ba4b5" stroke-width="0.6" stroke-linejoin="round" fill="none"/>
-      </svg>
+      </a>
     </div>
-    <p class="footer-text">Thanks for visiting  ·  保持联系</p>
-    <p style="text-align:center;font-size:9px;color:#ccc;margin-top:8px;letter-spacing:1px;">v20260720-奶牛猫</p>
-  </div>
 
-</div>
+    <!-- ===== 二、可下载简历 ===== -->
+    <h2 class="section-title">可下载简历</h2>
+
+    <div>
+      <a href="resume-cn.pdf" class="link-card download" download="胡雪莹-香港城市大学-中文简历.pdf" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="12" y1="18" x2="12" y2="12" />
+            <polyline points="9 15 12 18 15 15" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">胡雪莹 个人简历（中文版）</div>
+          <div class="link-meta">PDF · 点击下载（香港城市大学）</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="resume-en.pdf" class="link-card download" download="Hu-Xueying-CityUHK-Resume.pdf" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="12" y1="18" x2="12" y2="12" />
+            <polyline points="9 15 12 18 15 15" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">胡雪莹 个人简历（英文版）</div>
+          <div class="link-meta">PDF · Click to download（City University of Hong Kong）</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- ===== 三、微信公众号运营案例 ===== -->
+    <h2 class="section-title">微信公众号运营案例</h2>
+
+    <div>
+      <a href="https://mp.weixin.qq.com/s/2dmMFEqBbcnJyFy8TSD8IA" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z" />
+            <path d="M8 7h8M8 11h8M8 15h5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">2025-2026 CityU新传BOT</div>
+          <div class="link-meta">微信公众号</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://mp.weixin.qq.com/s/e76Iev9xiov1Yk0ghO1iGQ" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z" />
+            <path d="M8 7h8M8 11h8M8 15h5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">2025 从澜心理</div>
+          <div class="link-meta">微信公众号</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://mp.weixin.qq.com/s/pCNmShzb9KwgtFmTKYul4g" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z" />
+            <path d="M8 7h8M8 11h8M8 15h5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">2024 i深铁城服</div>
+          <div class="link-meta">微信公众号</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://mp.weixin.qq.com/s/qT9tFbfCtHFENjzFzQyPuA" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z" />
+            <path d="M8 7h8M8 11h8M8 15h5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">2024 中国太保国际家族办公室</div>
+          <div class="link-meta">微信公众号</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://mp.weixin.qq.com/s/ZHyU-adVBpCYRMybBZ7dnw" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z" />
+            <path d="M8 7h8M8 11h8M8 15h5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">2024 香港特区政府驻沪办</div>
+          <div class="link-meta">微信公众号</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://mp.weixin.qq.com/s/4PCWXqet-irAxKrGb6DLdg" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z" />
+            <path d="M8 7h8M8 11h8M8 15h5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">2023 GOMIT（本科毕业设计短片宣发账号）</div>
+          <div class="link-meta">微信公众号</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- ===== 四、小红书运营案例 ===== -->
+    <h2 class="section-title">小红书运营案例</h2>
+
+    <div>
+      <a href="https://xhslink.com/m/70ccyq0GQbB" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="4" />
+            <path d="M8 12l3 3 5-5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">从澜心理 - 小红书</div>
+          <div class="link-meta">小红书账号</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- ===== 五、Instagram运营案例 ===== -->
+    <h2 class="section-title">Instagram运营案例</h2>
+
+    <div>
+      <a href="https://www.instagram.com/haha.playground?igsh=MXczMXhpdjk4bDVjbQ==" class="link-card" target="_blank"
+        rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="5" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">haha.playground</div>
+          <div class="link-meta">Instagram</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- ===== 六、撰稿案例（重庆瞭望） ===== -->
+    <h2 class="section-title">撰稿案例（重庆瞭望）</h2>
+
+    <div>
+      <a href="https://mp.weixin.qq.com/s/MH3e6gkDTdzjg6vKfoPWvw" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">城市漫游热起来的背后</div>
+          <div class="link-meta">重庆瞭望</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://mp.weixin.qq.com/s/KTSBmFTu8qy3XhlJOHnzTw" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">城市IP何以出圈？</div>
+          <div class="link-meta">重庆瞭望</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://mp.weixin.qq.com/s/N4Ry1iniXbu4Ijv-toLKow" class="link-card" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+        </span>
+        <span class="link-body">
+          <div class="link-label">假，你休够了吗？</div>
+          <div class="link-meta">重庆瞭望</div>
+        </span>
+        <span class="link-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+      <!-- 手绘波浪线 -->
+      <div class="footer-scribble">
+        <svg width="64" height="28" viewBox="0 0 64 28" fill="none">
+          <path d="M4 14 Q12 6 20 14 Q28 22 36 14 Q44 6 52 14 Q58 18 60 16" stroke="#1c1c1c" stroke-width="1.2"
+            stroke-linecap="round" fill="none" />
+          <!-- 小星星点缀 -->
+          <path d="M18 5 L18.8 6.5 L20.5 7 L18.8 7.5 L18 9 L17.2 7.5 L15.5 7 L17.2 6.5 Z" stroke="#9bb58b"
+            stroke-width="0.7" stroke-linejoin="round" fill="none" />
+          <path d="M46 4 L46.6 5.2 L48 5.6 L46.6 6 L46 7.2 L45.4 6 L44 5.6 L45.4 5.2 Z" stroke="#8ba4b5"
+            stroke-width="0.6" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+      <p class="footer-text">Thanks for visiting · 保持联系</p>
+      <p style="text-align:center;font-size:9px;color:#ccc;margin-top:8px;letter-spacing:1px;">v20260720-final</p>
+    </div>
+
+  </div>
 
 </body>
+
 </html>
