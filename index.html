@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>胡雪莹/HU XUEYING</title>
+  <title>胡雪莹 / HU XUEYING</title>
   <style>
-    /* ===== 基础重置与变量 ===== */
+    /* ===== 笨拙手写字体加载 ===== */
+    @font-face {
+      font-family: 'ZCOOL KuaiLe';
+      src: url('https://fonts.gstaticfonts.com/zcoolkuaile/v19/8453d2c7be62a4d34d6e5e2e2d2e6b34.woff2') format('woff2');
+      font-display: swap;
+    }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -13,174 +19,247 @@
     }
 
     :root {
-      --ink: #1a1a1a;
-      --ink-light: #555;
-      --ink-faint: #999;
-      --bg: #fafaf8;
-      --card-bg: #fff;
-      --border: #d4d4d0;
-      --accent: #2d2d2d;
+      --ink: #1c1c1c;
+      --ink-soft: #3a3a3a;
+      --ink-faint: #8a8a8a;
+      --bg: #fdfdfc;
+      --card-bg: #fdfdfc;
+      --dot-blue: #8ba4b5;
+      --dot-green: #9bb58b;
+      --dot-ochre: #c4a87c;
     }
 
     body {
-      font-family: "KaiTi", "STKaiti", "楷体", "BiauKai", "AR PL UKai CN", serif;
+      font-family: "KaiTi", "STKaiti", "楷体", "BiauKai", "AR PL UKai CN", "Noto Serif SC", serif;
       background: var(--bg);
       color: var(--ink);
-      line-height: 1.8;
+      line-height: 1.9;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
-      background-image:
-        radial-gradient(ellipse at 20% 10%, rgba(0,0,0,0.02) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 90%, rgba(0,0,0,0.02) 0%, transparent 60%);
     }
 
-    /* ===== 手绘风格SVG装饰 ===== */
-    .decor-top {
-      display: flex;
-      justify-content: center;
-      padding: 48px 0 8px;
-    }
-    .decor-top svg {
-      opacity: 0.7;
-      animation: float-soft 6s ease-in-out infinite;
-    }
-    @keyframes float-soft {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(1deg); }
+    /* ===== 纸张肌理层 ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 400px 400px;
     }
 
     /* ===== 容器 ===== */
     .container {
       max-width: 520px;
       margin: 0 auto;
-      padding: 0 24px 60px;
+      padding: 0 28px 72px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* ===== 头像 ===== */
+    /* ===== 顶部留白装饰 ===== */
+    .top-breath {
+      height: 64px;
+    }
+
+    /* ===== 手绘插画区 ===== */
+    .illust-section {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .illust-section svg {
+      opacity: 0.82;
+    }
+
+    /* 微小浮动 */
+    @keyframes gentle-sway {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      40% { transform: translateY(-4px) rotate(0.8deg); }
+      60% { transform: translateY(-3px) rotate(-0.5deg); }
+    }
+
+    .sway {
+      animation: gentle-sway 8s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    /* ===== 个人信息区 ===== */
     .profile {
       text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 28px;
+    }
+
+    /* 头像 - 手绘风格圆形 */
+    .avatar-wrap {
+      margin-bottom: 24px;
+      display: inline-block;
     }
 
     .avatar-placeholder {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      border: 2.5px solid var(--ink);
+      width: 80px;
+      height: 80px;
+      border-radius: 44% 56% 52% 48% / 48% 52% 44% 56%;
+      border: 1.8px solid var(--ink);
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--card-bg);
-      margin: 0 auto 20px;
     }
 
     .avatar-placeholder img {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
+      border-radius: inherit;
       object-fit: cover;
     }
 
-    /* ===== 姓名 ===== */
-    .name {
-      font-size: 28px;
+    /* ===== 名字 - 笨拙手写 ===== */
+    .name-cn {
+      font-size: 36px;
       font-weight: normal;
-      letter-spacing: 6px;
-      margin-bottom: 4px;
+      letter-spacing: 12px;
       color: var(--ink);
-      font-family: "KaiTi", "STKaiti", "楷体", "BiauKai", serif;
+      margin-bottom: 6px;
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+      line-height: 1.2;
+      /* 模拟手写不齐 */
+      text-indent: 6px;
+      word-spacing: -4px;
     }
 
     .name-en {
-      font-size: 13px;
-      letter-spacing: 3px;
-      color: var(--ink-light);
+      font-size: 12px;
+      letter-spacing: 5px;
+      color: var(--ink-soft);
       text-transform: uppercase;
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+      margin-bottom: 22px;
     }
 
-    /* ===== 简介 ===== */
+    /* ===== 简介文字 ===== */
     .bio {
-      text-align: center;
-      margin: 20px 0 32px;
-      font-size: 15px;
-      color: var(--ink-light);
-      line-height: 2;
-      letter-spacing: 1px;
-    }
-
-    .bio .education {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--ink-faint);
-      margin-top: 8px;
-      line-height: 2;
+      line-height: 2.2;
+      letter-spacing: 1.5px;
     }
 
-    /* ===== 手绘分割线 ===== */
-    .divider {
+    .bio p {
+      margin: 0;
+    }
+
+    /* ===== 小装饰点 ===== */
+    .dot-sep {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin: 28px 0 20px;
+      gap: 12px;
+      margin: 10px 0;
     }
-    .divider svg {
+
+    .dot-sep span {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .dot-sep .d1 { background: var(--dot-ochre); }
+    .dot-sep .d2 { background: var(--dot-green); }
+    .dot-sep .d3 { background: var(--dot-blue); }
+
+    /* ===== 社交图标行 ===== */
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      margin: 32px 0;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      text-decoration: none;
+      transition: opacity 0.2s;
+      border-radius: 50%;
+    }
+
+    .social-icon:hover {
       opacity: 0.5;
     }
-    .divider-text {
-      font-size: 14px;
-      color: var(--ink-faint);
-      letter-spacing: 3px;
-      white-space: nowrap;
+
+    .social-icon svg {
+      width: 18px;
+      height: 18px;
     }
 
-    /* ===== 链接按钮组 ===== */
-    .link-group {
-      margin-bottom: 6px;
+    /* ===== 分区标题 - 笨拙手写 ===== */
+    .section-title {
+      text-align: center;
+      font-size: 15px;
+      color: var(--ink-soft);
+      letter-spacing: 5px;
+      margin: 44px 0 18px;
+      font-family: "KaiTi", "STKaiti", "楷体", serif;
+      font-weight: normal;
     }
 
-    /* ===== 链接卡片 - 手绘风格 ===== */
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      margin: 10px auto 0;
+      background: var(--ink);
+      opacity: 0.25;
+      border-radius: 1px;
+    }
+
+    /* ===== 链接卡片 - 极简纸张风格 ===== */
     .link-card {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       background: var(--card-bg);
-      border: 1.5px solid var(--ink);
-      padding: 15px 18px;
-      margin-bottom: 10px;
+      padding: 18px 0;
       text-decoration: none;
       color: var(--ink);
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: opacity 0.25s;
       position: relative;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    }
+
+    /* 卡片之间的细线 - 手绘感 */
+    .link-card + .link-card {
+      border-top: 1px solid rgba(0,0,0,0.08);
     }
 
     .link-card:hover {
-      background: var(--ink);
-      color: #fff;
-      transform: translateY(-1px);
-      box-shadow: 3px 4px 0 rgba(0,0,0,0.08);
+      opacity: 0.55;
     }
 
-    .link-card:hover .link-icon svg {
-      stroke: #fff;
-    }
-
-    .link-card:hover .link-arrow {
-      filter: invert(1);
-    }
-
-    .link-card:hover .link-meta {
-      color: rgba(255,255,255,0.65);
-    }
-
+    /* 左边小图标区 */
     .link-icon {
-      width: 28px;
-      height: 28px;
+      width: 22px;
+      height: 22px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0.7;
+    }
+
+    .link-icon svg {
+      width: 20px;
+      height: 20px;
     }
 
     .link-body {
@@ -189,196 +268,198 @@
     }
 
     .link-label {
-      font-size: 15px;
+      font-size: 14px;
       letter-spacing: 1px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.5;
+      color: var(--ink);
     }
 
     .link-meta {
       font-size: 11px;
       color: var(--ink-faint);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       margin-top: 1px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
+    /* 右侧小箭头 */
     .link-arrow {
-      width: 16px;
-      height: 16px;
+      width: 12px;
+      height: 12px;
       flex-shrink: 0;
-      opacity: 0.4;
-      transition: transform 0.2s ease;
-    }
-
-    .link-card:hover .link-arrow {
-      transform: translateX(3px);
-      opacity: 1;
-    }
-
-    /* ===== 下载按钮特殊样式 ===== */
-    .link-card.download {
-      border-style: dashed;
-    }
-
-    /* ===== 社交图标行 ===== */
-    .social-row {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin: 28px 0;
-    }
-
-    .social-icon {
-      width: 40px;
-      height: 40px;
+      opacity: 0.3;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid var(--ink);
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 16px;
-      transition: all 0.2s ease;
-      border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
     }
 
-    .social-icon:hover {
-      background: var(--ink);
-      color: #fff;
-      transform: scale(1.08);
+    .link-arrow svg {
+      width: 12px;
+      height: 12px;
     }
 
-    .social-icon:hover svg {
-      stroke: #fff;
+    /* 下载卡片 */
+    .link-card.download {
+      /* 同样的极简风格，无特殊样式 */
     }
 
     /* ===== 页脚 ===== */
     .footer {
       text-align: center;
-      padding: 40px 0 20px;
+      padding: 56px 0 32px;
     }
 
-    .footer-decor {
-      margin-bottom: 16px;
-      opacity: 0.35;
+    .footer-scribble {
+      margin-bottom: 20px;
+      opacity: 0.25;
     }
 
     .footer-text {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--ink-faint);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
 
     /* ===== 响应式 ===== */
     @media (max-width: 480px) {
       .container {
-        padding: 0 16px 40px;
+        padding: 0 20px 56px;
       }
-      .name {
-        font-size: 24px;
-        letter-spacing: 4px;
+      .name-cn {
+        font-size: 30px;
+        letter-spacing: 8px;
+      }
+      .top-breath {
+        height: 40px;
+      }
+      .section-title {
+        margin: 36px 0 14px;
       }
       .link-card {
-        padding: 13px 14px;
+        padding: 15px 0;
       }
       .link-label {
-        font-size: 14px;
+        font-size: 13px;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== 顶部装饰：手绘植物 ===== -->
-<div class="decor-top">
-  <svg width="80" height="90" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M25 68 L28 85 Q30 87 40 87 Q50 87 52 85 L55 68" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M24 68 Q40 72 56 68" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <path d="M22 68 L25 62 Q26 60 28 62 L27 68" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M58 68 L55 62 Q54 60 52 62 L53 68" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M30 75 Q40 78 50 75" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.4"/>
-    <path d="M40 68 Q40 50 42 38" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <path d="M41 52 Q28 44 18 38" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-    <path d="M41 48 Q55 38 64 32" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-    <path d="M18 38 Q12 28 18 18 Q26 24 22 36" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M18 38 L22 36" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round"/>
-    <path d="M15 28 Q20 30 22 28" stroke="#1a1a1a" stroke-width="0.7" stroke-linecap="round"/>
-    <path d="M64 32 Q72 22 68 14 Q58 18 58 28" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M64 32 L60 28" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round"/>
-    <path d="M66 22 L64 26" stroke="#1a1a1a" stroke-width="0.7" stroke-linecap="round"/>
-    <path d="M42 38 Q38 22 30 14 Q36 10 44 16 Q52 10 54 18 Q48 24 46 36" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M38 20 Q40 16 42 18" stroke="#1a1a1a" stroke-width="0.7" stroke-linecap="round"/>
-    <path d="M48 16 Q50 14 50 16" stroke="#1a1a1a" stroke-width="0.7" stroke-linecap="round"/>
-    <circle cx="32" cy="22" r="1.5" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
-    <circle cx="52" cy="24" r="1.5" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
-    <circle cx="40" cy="13" r="1.5" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
-  </svg>
-</div>
-
 <div class="container">
+
+  <div class="top-breath"></div>
+
+  <!-- ===== 手绘植物插画 ===== -->
+  <div class="illust-section">
+    <div class="sway">
+      <svg width="90" height="100" viewBox="0 0 90 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 花盆 - 笨拙线条 -->
+        <path d="M28 78 L30 94 Q32 96 45 96 Q58 96 60 94 L62 78"
+          stroke="#1c1c1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- 盆口歪线 -->
+        <path d="M26 78 Q45 83 64 78"
+          stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- 盆身纹理，随意 -->
+        <path d="M33 85 Q45 88 57 85" stroke="#1c1c1c" stroke-width="0.9" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <path d="M34 90 Q46 93 56 90" stroke="#1c1c1c" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.4"/>
+        <!-- 主茎 - 粗细不均 -->
+        <path d="M45 78 Q43 60 46 44 Q47 36 48 30"
+          stroke="#1c1c1c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- 左枝 -->
+        <path d="M46 56 Q34 48 24 42"
+          stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- 右枝 -->
+        <path d="M46 50 Q58 40 68 34"
+          stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- 左叶 - 笨拙形状 -->
+        <path d="M24 42 Q18 32 24 22 Q32 28 28 40"
+          stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- 叶脉 - 随意 -->
+        <path d="M24 42 L27 40" stroke="#1c1c1c" stroke-width="1" stroke-linecap="round"/>
+        <path d="M21 32 Q25 34 27 32" stroke="#1c1c1c" stroke-width="0.8" stroke-linecap="round"/>
+        <!-- 右叶 -->
+        <path d="M68 34 Q76 24 72 16 Q62 20 62 30"
+          stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M68 34 L64 30" stroke="#1c1c1c" stroke-width="1" stroke-linecap="round"/>
+        <path d="M70 24 L68 28" stroke="#1c1c1c" stroke-width="0.8" stroke-linecap="round"/>
+        <!-- 顶叶 - 稍大且歪 -->
+        <path d="M48 30 Q44 14 34 6 Q40 2 50 8 Q60 2 62 10 Q56 16 52 28"
+          stroke="#1c1c1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M44 14 Q46 10 48 12" stroke="#1c1c1c" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="M54 10 Q56 8 56 10" stroke="#1c1c1c" stroke-width="0.8" stroke-linecap="round"/>
+        <!-- 小花苞 - 低饱和淡绿 -->
+        <circle cx="38" cy="26" r="2.2" stroke="#9bb58b" stroke-width="1.4" fill="none"/>
+        <circle cx="58" cy="28" r="2.2" stroke="#8ba4b5" stroke-width="1.4" fill="none"/>
+        <circle cx="47" cy="16" r="2" stroke="#c4a87c" stroke-width="1.3" fill="none"/>
+      </svg>
+    </div>
+  </div>
 
   <!-- ===== 一、个人信息介绍 ===== -->
   <div class="profile">
-    <!-- 头像：将下方 div 替换为 <img src="头像URL" alt="头像" style="width:96px;height:96px;border-radius:50%;border:2.5px solid #1a1a1a;object-fit:cover;display:block;margin:0 auto 20px;" /> -->
-    <div class="avatar-placeholder">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="17" r="8" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
-        <path d="M10 42 Q10 30 24 30 Q38 30 38 42" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" fill="none"/>
-      </svg>
+    <div class="avatar-wrap">
+      <!--
+        替换真实头像：将下方整个 div.avatar-placeholder 替换为
+        <img src="你的头像URL" alt="头像"
+          style="width:80px;height:80px;border-radius:44% 56% 52% 48% / 48% 52% 44% 56%;border:1.8px solid #1c1c1c;object-fit:cover;display:block;" />
+      -->
+      <div class="avatar-placeholder">
+        <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="16" r="8" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 42 Q10 28 24 28 Q38 28 38 42" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
     </div>
 
-    <h1 class="name">胡雪莹</h1>
+    <h1 class="name-cn">胡雪莹</h1>
     <p class="name-en">HU XUEYING</p>
 
     <div class="bio">
-      <div class="education">
-        <p>2025-2026 香港城市大学 · 整合营销传播</p>
-        <p>2021-2025 西南大学 · 广播电视编导</p>
-      </div>
+      <p>2025-2026 香港城市大学 · 整合营销传播</p>
+      <p>2021-2025 西南大学 · 广播电视编导</p>
     </div>
+  </div>
+
+  <!-- 低饱和装饰点 -->
+  <div class="dot-sep">
+    <span class="d1"></span>
+    <span class="d2"></span>
+    <span class="d3"></span>
   </div>
 
   <!-- 联系方式图标 -->
   <div class="social-row">
     <a href="tel:" class="social-icon" title="电话" aria-label="电话">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
       </svg>
     </a>
     <a href="mailto:" class="social-icon" title="邮箱" aria-label="邮箱">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2"/>
         <path d="M22 4 L12 13 L2 4"/>
       </svg>
     </a>
     <a href="https://xhslink.com/m/70ccyq0GQbB" class="social-icon" title="小红书" aria-label="小红书" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="4" y="4" width="16" height="16" rx="4"/>
         <path d="M8 12 L12 8 L16 12 L12 16 Z"/>
       </svg>
     </a>
     <a href="https://wa.me/" class="social-icon" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
       </svg>
     </a>
   </div>
 
   <!-- ===== 二、可下载简历 ===== -->
-  <div class="divider">
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-    <span class="divider-text">可下载简历</span>
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-  </div>
+  <h2 class="section-title">可下载简历</h2>
 
-  <div class="link-group">
+  <div>
     <a href="#" class="link-card download" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
           <polyline points="14 2 14 8 20 8"/>
           <line x1="12" y1="18" x2="12" y2="12"/>
@@ -389,12 +470,14 @@
         <div class="link-label">胡雪莹 个人简历（中文版）</div>
         <div class="link-meta">PDF · 点击下载</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="#" class="link-card download" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
           <polyline points="14 2 14 8 20 8"/>
           <line x1="12" y1="18" x2="12" y2="12"/>
@@ -405,21 +488,19 @@
         <div class="link-label">胡雪莹 个人简历（英文版）</div>
         <div class="link-meta">PDF · Click to download</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
   </div>
 
   <!-- ===== 三、微信公众号运营案例 ===== -->
-  <div class="divider">
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-    <span class="divider-text">微信公众号运营案例</span>
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-  </div>
+  <h2 class="section-title">微信公众号运营案例</h2>
 
-  <div class="link-group">
+  <div>
     <a href="https://mp.weixin.qq.com/s/2dmMFEqBbcnJyFy8TSD8IA" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
           <path d="M8 7h8M8 11h8M8 15h5"/>
         </svg>
@@ -428,12 +509,14 @@
         <div class="link-label">2025-2026 CityU新传BOT</div>
         <div class="link-meta">微信公众号</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="https://mp.weixin.qq.com/s/e76Iev9xiov1Yk0ghO1iGQ" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
           <path d="M8 7h8M8 11h8M8 15h5"/>
         </svg>
@@ -442,12 +525,14 @@
         <div class="link-label">2025 从澜心理</div>
         <div class="link-meta">微信公众号</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="https://mp.weixin.qq.com/s/pCNmShzb9KwgtFmTKYul4g" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
           <path d="M8 7h8M8 11h8M8 15h5"/>
         </svg>
@@ -456,12 +541,14 @@
         <div class="link-label">2024 i深铁城服</div>
         <div class="link-meta">微信公众号</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="https://mp.weixin.qq.com/s/qT9tFbfCtHFENjzFzQyPuA" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
           <path d="M8 7h8M8 11h8M8 15h5"/>
         </svg>
@@ -470,12 +557,14 @@
         <div class="link-label">2024 中国太保国际家族办公室</div>
         <div class="link-meta">微信公众号</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="https://mp.weixin.qq.com/s/ZHyU-adVBpCYRMybBZ7dnw" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
           <path d="M8 7h8M8 11h8M8 15h5"/>
         </svg>
@@ -484,12 +573,14 @@
         <div class="link-label">2024 香港特区政府驻沪办</div>
         <div class="link-meta">微信公众号</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="https://mp.weixin.qq.com/s/4PCWXqet-irAxKrGb6DLdg" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2z"/>
           <path d="M8 7h8M8 11h8M8 15h5"/>
         </svg>
@@ -498,21 +589,19 @@
         <div class="link-label">2023 GOMIT（本科毕业设计短片宣发账号）</div>
         <div class="link-meta">微信公众号</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
   </div>
 
   <!-- ===== 四、小红书运营案例 ===== -->
-  <div class="divider">
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-    <span class="divider-text">小红书运营案例</span>
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-  </div>
+  <h2 class="section-title">小红书运营案例</h2>
 
-  <div class="link-group">
+  <div>
     <a href="https://xhslink.com/m/70ccyq0GQbB" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="4" y="4" width="16" height="16" rx="4"/>
           <path d="M8 12l3 3 5-5"/>
         </svg>
@@ -521,21 +610,19 @@
         <div class="link-label">从澜心理 - 小红书</div>
         <div class="link-meta">小红书账号</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
   </div>
 
   <!-- ===== 五、Instagram运营案例 ===== -->
-  <div class="divider">
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-    <span class="divider-text">Instagram运营案例</span>
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-  </div>
+  <h2 class="section-title">Instagram运营案例</h2>
 
-  <div class="link-group">
+  <div>
     <a href="https://www.instagram.com/haha.playground?igsh=MXczMXhpdjk4bDVjbQ==" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5"/>
           <circle cx="12" cy="12" r="5"/>
         </svg>
@@ -544,21 +631,19 @@
         <div class="link-label">haha.playground</div>
         <div class="link-meta">Instagram</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
   </div>
 
   <!-- ===== 六、撰稿案例（重庆瞭望） ===== -->
-  <div class="divider">
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-    <span class="divider-text">撰稿案例（重庆瞭望）</span>
-    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="#999" stroke-width="0.5" stroke-dasharray="3 3"/></svg>
-  </div>
+  <h2 class="section-title">撰稿案例（重庆瞭望）</h2>
 
-  <div class="link-group">
+  <div>
     <a href="https://mp.weixin.qq.com/s/MH3e6gkDTdzjg6vKfoPWvw" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
           <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
         </svg>
@@ -567,12 +652,14 @@
         <div class="link-label">城市漫游热起来的背后</div>
         <div class="link-meta">重庆瞭望</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="https://mp.weixin.qq.com/s/KTSBmFTu8qy3XhlJOHnzTw" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
           <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
         </svg>
@@ -581,12 +668,14 @@
         <div class="link-label">城市IP何以出圈？</div>
         <div class="link-meta">重庆瞭望</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
 
     <a href="https://mp.weixin.qq.com/s/N4Ry1iniXbu4Ijv-toLKow" class="link-card" target="_blank" rel="noopener">
       <span class="link-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
           <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
         </svg>
@@ -595,17 +684,24 @@
         <div class="link-label">假，你休够了吗？</div>
         <div class="link-meta">重庆瞭望</div>
       </span>
-      <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="link-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
     </a>
   </div>
 
   <!-- ===== 页脚 ===== -->
   <div class="footer">
-    <div class="footer-decor">
-      <svg width="60" height="30" viewBox="0 0 60 30" fill="none">
-        <path d="M5 15 Q15 5 25 15 Q35 25 45 15 Q55 5 58 10" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round" fill="none"/>
-        <path d="M40 5 L41 7 L43 8 L41 9 L40 11 L39 9 L37 8 L39 7 Z" stroke="#1a1a1a" stroke-width="0.8" stroke-linejoin="round" fill="none"/>
-        <path d="M18 3 L18.8 4.5 L20.5 5 L18.8 5.5 L18 7 L17.2 5.5 L15.5 5 L17.2 4.5 Z" stroke="#1a1a1a" stroke-width="0.6" stroke-linejoin="round" fill="none"/>
+    <!-- 手绘波浪线 -->
+    <div class="footer-scribble">
+      <svg width="64" height="28" viewBox="0 0 64 28" fill="none">
+        <path d="M4 14 Q12 6 20 14 Q28 22 36 14 Q44 6 52 14 Q58 18 60 16"
+          stroke="#1c1c1c" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        <!-- 小星星点缀 -->
+        <path d="M18 5 L18.8 6.5 L20.5 7 L18.8 7.5 L18 9 L17.2 7.5 L15.5 7 L17.2 6.5 Z"
+          stroke="#9bb58b" stroke-width="0.7" stroke-linejoin="round" fill="none"/>
+        <path d="M46 4 L46.6 5.2 L48 5.6 L46.6 6 L46 7.2 L45.4 6 L44 5.6 L45.4 5.2 Z"
+          stroke="#8ba4b5" stroke-width="0.6" stroke-linejoin="round" fill="none"/>
       </svg>
     </div>
     <p class="footer-text">Thanks for visiting  ·  保持联系</p>
